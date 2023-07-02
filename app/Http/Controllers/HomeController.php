@@ -22,7 +22,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
-    }
+{
+    return view('home')->with('message', '¡Bienvenido, has iniciado sesión!');
+}
+
 }

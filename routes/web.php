@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('Bienvenido');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -37,5 +37,10 @@ Route::middleware(['auth', 'role:administrativo'])->group(function () {
     Route::get('/administrativo/dashboard', [App\Http\Controllers\AdministrativoController::class, 'dashboard'])->name('administrativo.dashboard');
     
 });
+
+/*Ruta de matricula estudiante*/
+Route::get('/matricula', [App\Http\Controllers\MatriculaController::class, 'create'])->name('matricula.create')->middleware('auth');
+
+
 
 
