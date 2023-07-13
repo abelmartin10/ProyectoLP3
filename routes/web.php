@@ -35,6 +35,9 @@ Route::middleware(['auth', 'role:administrativo'])->group(function () {
 /*Ruta de matricula estudiante*/
 Route::get('/matricula', [App\Http\Controllers\MatriculaController::class, 'create'])->name('matricula.create')->middleware('auth');
 
+Route::get('/matricula/confirmation', [App\Http\Controllers\MatriculaController::class, 'confirmation'])->name('matricula.confirmation');
+
+
 
 
 

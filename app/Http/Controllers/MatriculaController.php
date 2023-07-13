@@ -15,22 +15,25 @@ class MatriculaController extends Controller
             'facultad' => 'required',
             'escuela_academica' => 'required',
             'curso' => 'required',
-            // Agrega aquí las reglas de validación para los demás campos del formulario
+            
         ]);
 
-        // Crear una nueva instancia de Matricula
+        
         $matricula = new Matricula();
         $matricula->facultad = $request->input('facultad');
         $matricula->escuela_academica = $request->input('escuela_academica');
         $matricula->curso = $request->input('curso');
-        // Asigna los valores de los demás campos de la matrícula
-
-        // Guardar la matrícula en la base de datos
+        
         $matricula->save();
 
-        // Redireccionar a una página de confirmación o a otra vista
         return redirect()->route('matricula.confirmation');
     }
 
-    // Otros métodos del controlador...
+    
+    public function cursosDisponibles()
+    {
+        $cursos = Curso::all(); // Obtener todos los cursos desde la base de datos
+
+        return view('matricula.cursos_disponibles', compact('cursos'));
+    }
 }
